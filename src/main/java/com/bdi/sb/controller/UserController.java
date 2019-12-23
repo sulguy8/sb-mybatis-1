@@ -32,7 +32,10 @@ public class UserController {
 
 		return uiService.doLogin(user);
 	}
-	
+	@PostMapping("/users")
+	public int insertUserInfo(UserInfoVO user) {
+		return uiService.insertUserInfo(user);
+	}	
 	
 	
 	

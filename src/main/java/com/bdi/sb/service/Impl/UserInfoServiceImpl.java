@@ -29,4 +29,10 @@ public class UserInfoServiceImpl implements UserInfoService {
 		return uiMapper.doLogin(user);
 	}
 
+	@Override
+	public int insertUserInfo(UserInfoVO user) {
+		user.setUiPwd(SHAUtil.getSHA(user.getUiPwd()));
+		System.out.println(user.getUiPwd());
+		return uiMapper.insertUserInfo(user);
+	}
 }

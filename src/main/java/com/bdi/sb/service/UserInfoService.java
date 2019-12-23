@@ -7,4 +7,5 @@ import com.bdi.sb.vo.UserInfoVO;
 public interface UserInfoService {
 	public List<UserInfoVO> selectUserInfoList(UserInfoVO user);
 	public UserInfoVO doLogin(UserInfoVO user);
+	public int insertUserInfo(UserInfoVO user);
 }
