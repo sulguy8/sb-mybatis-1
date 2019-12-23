@@ -12,4 +12,8 @@ public class ViewController {
 	public String goPage(HttpServletRequest req) {
 		return req.getRequestURI();
 	}
+	@GetMapping("/")
+	public String home() {
+		return "/front/index";
+	}
 }
