@@ -54,7 +54,7 @@ function goPage(page){
 					html += '<a data-page="' + i + '"> [' + i + ']</a>';
 				}
 			}
-			if(sPage!=91){
+			if(ePage != totalPage){
 				html += '<a data-page="' + (sPage+10) + '">▶</a>'
 			}
 			$('#pagination').html(html);

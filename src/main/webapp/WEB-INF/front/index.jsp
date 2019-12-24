@@ -48,7 +48,7 @@ a[data-page]:hover{
 					</li>
 					<li class="nav-item" data-page="test-list"><a class="nav-link">리스트</a>
 					</li>
-					<li class="nav-item" data-page="contact"><a class="nav-link">Contact</a>
+					<li class="nav-item" data-page="test-blog"><a class="nav-link">블로그</a>
 					</li>
 				</ul>
 			</div>
