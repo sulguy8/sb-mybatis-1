@@ -71,7 +71,7 @@ a[data-page]:hover{
 			}
 			$('li[data-page]').removeClass('active');
 			$('li[data-page=' + pPage + ']').addClass('active');
-			$('li[data-page]').on('click',function(){
+			$('li[data-page],button[data-page]').on('click',function(){
 				var page = this.getAttribute('data-page');
 				location.href='/?page=' + page;
 			})

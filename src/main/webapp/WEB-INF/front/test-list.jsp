@@ -3,6 +3,7 @@
 <div class="container">
 	<table class="table table-bordred">
 		<tr>
+			<th><input type="checkbox" name='allCheck' id='allCheck' onClick='allChk(this)'></th>
 			<th>번호</th>
 			<th>이름</th>
 			<th>주소</th>
@@ -13,12 +14,48 @@
 		</tbody>
 	</table>
 	<div id="pagination" align="center"></div>
+	<button data-page="test-insert">게시물 작성</button>
+	<button onclick="deleteTestInfo()">게시물 삭제</button>
 </div>
 <div id="pageInfo"></div>
 <script>
-$(document).ready(goPage(1));
+function allChk(obj){
+	var states = obj.checked;
+		if(states){
+			$('.chkbox').attr('checked', true);
+		} else{
+			$('.chkbox').attr('checked', false);
+		}
+			
+}
 
+
+$(document).ready(goPage(1));
 var rowCount =10;
+
+function deleteTestInfo(){
+	var checkedObjs = $('input[type=checkbox][name=chkbox]:checked');
+	var tiNums = [];
+	for(var i=0; i<checkedObjs.length; i++){
+	tiNums[i] = checkedObjs[i].value;
+	}
+	console.log(tiNums);
+	var tiNumss = {
+			tiNums : tiNums
+	};
+	console.log(tiNumss);
+	$.ajax({
+		url:'/testss',
+		method:'DELETE',
+	 	data: JSON.stringify(tiNumss),
+		beforeSend : function(xhr){
+	 		xhr.setRequestHeader('Content-type','application/json;charset=UTF-8');
+	 	},
+		success:function(res){
+			alert(res);
+		}
+	})
+}
 
 function goPage(page){
 	$.ajax({
@@ -26,11 +63,11 @@ function goPage(page){
 		method:'GET',
 	 	data:'page.page=' + page, 
 		success:function(res){
-			console.log(res);
 			var html = '';
 			for(var list of res.list){
-				html += '<tr>'
-				html += '<td>' + list.tiNum +'</td>';
+				html += '<tr>';
+				html += '<td><input type="checkbox" class="chkbox" name="chkbox" value="' + list.tiNum + '"></td>'
+				html += '<td id="'+list.tiNum+'">' + list.tiNum +'</td>';
 				html += '<td>' + list.tiName +'</td>';
 				html += '<td>' + list.tiAddr +'</td>';
 				html += '<td>' + list.tiEtc +'</td>';
@@ -58,7 +95,7 @@ function goPage(page){
 				html += '<a data-page="' + (sPage+10) + '">▶</a>'
 			}
 			$('#pagination').html(html);
-			setEvent();
+				setEvent();
 		}
 	})	
 }
@@ -67,6 +104,10 @@ function goPage(page){
 function setEvent(){
 	$('a[data-page]').on('click',function(){
 		goPage(this.getAttribute('data-page'));
+	})
+	$('td[id]').on('click',function(){
+		var tiNum = this.innerText;
+		location.href='/?page=test-view&tiNum=' + tiNum;
 	})
 }
 

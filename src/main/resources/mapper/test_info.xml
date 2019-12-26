@@ -10,7 +10,48 @@
 		limit #{page.startNum},10
 	</select>
 	
+	<select id="selectTestInfo" resultType="test">
+		select * from test_info where ti_num=#{tiNum}
+	</select>
+	
 	<select id="totalTestInfoCount" resultType="int">
 		SELECT COUNT(*) FROM test_info
 	</select>
+	
+	<insert id="insertTestInfo">
+		insert into test_info(ti_name, ti_addr, ti_etc)
+		values(#{tiName},#{tiAddr},#{tiEtc})
+	</insert>
+	
+	<update id="updateTestInfo">
+		update test_info 
+		set ti_name = #{tiName},
+		ti_addr = #{tiAddr},
+		ti_etc = #{tiEtc}
+		where ti_num=#{tiNum}
+	</update>
+	
+	<update id="updateTiUpdcnt">
+		update test_info
+		set ti_updcnt = ti_updcnt +1
+		where ti_num=#{tiNum}
+	</update>
+	
+	<delete id="deleteTestInfo">
+		delete from test_info
+		where ti_num=#{tiNum}
+	</delete>
+	
+	<delete id="deleteTestInfos">
+		delete from test_info
+		<where>
+			<if test="tiNums != null">
+				<foreach collection="tiNums" item="tiNum" separator="or">
+					ti_num =
+					#{tiNum}
+				</foreach>
+			</if>
+	</where>
+
+	</delete>
 </mapper>

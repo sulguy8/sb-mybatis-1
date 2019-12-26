@@ -11,5 +11,7 @@ public class TestInfoVO {
 	private String tiName;
 	private String tiAddr;
 	private String tiEtc;
+	private int[] tiNums;
+	private Integer tiUpdcnt;
 	private PageVO page = new PageVO();
 }
