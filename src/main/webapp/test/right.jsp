@@ -7,7 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-${param.user}
+나 는 오른쪽
 </body>
 </html>

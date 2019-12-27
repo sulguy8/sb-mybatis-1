@@ -3,7 +3,7 @@
 <div class="container">
 	<table class="table table-bordred">
 		<tr>
-			<th><input type="checkbox" name='allCheck' id='allCheck' onClick='allChk(this)'></th>
+			<th><input type="checkbox" onClick='allChk(this)'></th>
 			<th>번호</th>
 			<th>이름</th>
 			<th>주소</th>

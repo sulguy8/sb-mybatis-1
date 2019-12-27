@@ -7,7 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-${param.user}
+<a href="/tests">테스트리스트</a>
 </body>
 </html>
